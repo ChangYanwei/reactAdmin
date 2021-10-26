@@ -37,7 +37,6 @@ class LeftNav extends Component {
     const pathname = this.props.location.pathname;
     // 获取菜单的节点列表
     const menuNodes = this.getMenuNodes(menuList);
-    console.log(menuNodes);
     return (
       <div className="left-nav">
         <Link to="/" className="left-nav-header">

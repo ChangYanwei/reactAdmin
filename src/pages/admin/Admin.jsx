@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Redirect, Switch, Route } from "react-router-dom";
 import { Layout } from "antd";
 import memoryUtil from "../../utils/memoryUtil";
+import menuList from "../../config/menuConfig";
 
 // 引入子组件
 import LeftNav from "../../components/left-nav/LeftNav";
@@ -19,12 +20,30 @@ import Line from "../charts/Line";
 const { Footer, Sider, Content } = Layout;
 
 export default class Admin extends Component {
+  // 获取当前页面的标题
+  getTitle = menuList => {
+    const pathname = this.props.location.pathname;
+    for (let i = 0; i < menuList.length; i++) {
+      const menu = menuList[i];
+      if (menu.key === pathname) {
+        return menu.title;
+      }
+      if (menu.children) {
+        const title = this.getTitle(menu.children);
+        if (title) return title;
+      }
+    }
+  };
+
   render() {
     const user = memoryUtil.user;
-    if (!user && !user._id) {
+
+    if (!user._id) {
       // 在render函数中一定要返回内容，组件或者html
       return <Redirect to="/login" />;
     }
+
+    const title = this.getTitle(menuList);
 
     return (
       <Layout style={{ height: "100%" }}>
@@ -32,8 +51,8 @@ export default class Admin extends Component {
           <LeftNav />
         </Sider>
         <Layout>
-          <Header>Header</Header>
-          <Content style={{ backgroundColor: "white" }}>
+          <Header title={title}>Header</Header>
+          <Content style={{ margin: "20px", backgroundColor: "white" }}>
             <Switch>
               <Route path="/home" component={Home} />
               <Route path="/category" component={Category} />
