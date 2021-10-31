@@ -46,11 +46,18 @@ export default class Admin extends Component {
     const title = this.getTitle(menuList);
 
     return (
-      <Layout style={{ height: "100%" }}>
-        <Sider>
+      <Layout style={{ minHeight: "100vh" }}>
+        <Sider
+          style={{
+            overflow: "auto",
+            height: "100vh",
+            position: "fixed",
+            left: 0,
+          }}
+        >
           <LeftNav />
         </Sider>
-        <Layout>
+        <Layout style={{ marginLeft: 200 }}>
           <Header title={title}>Header</Header>
           <Content style={{ margin: "20px", backgroundColor: "white" }}>
             <Switch>

@@ -18,6 +18,7 @@ export default function request(config) {
         resolve(res);
       })
       .catch(err => {
+        console.log(err);
         message.error("请求失败，请重试");
       });
   });

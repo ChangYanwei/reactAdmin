@@ -4,8 +4,8 @@ import { CaretRightOutlined } from "@ant-design/icons";
 import LinkButton from "../../components/link-button/LinkButton";
 
 // 子组件
-import AddForm from "./components/AddForm";
-import UpdateForm from "./components/UpdateForm";
+import AddForm from "./childComponents/AddForm";
+import UpdateForm from "./childComponents/UpdateForm";
 
 // 获取发送网络请求的函数
 import {

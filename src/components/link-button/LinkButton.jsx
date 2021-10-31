@@ -4,7 +4,7 @@ import "./LinkButton.less";
 export default class LinkButton extends Component {
   render() {
     // 方式1：
-    // const { onClick, showConfirm } = this.props;
+    // const { onClick, children } = this.props;
     // return (
     //   <button onClick={onClick} className="link-button">
     //     {children}
