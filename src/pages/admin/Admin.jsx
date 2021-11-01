@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Redirect, Switch, Route } from "react-router-dom";
-import { Layout } from "antd";
+import { Layout, Tag } from "antd";
+import { GithubOutlined } from "@ant-design/icons";
 import memoryUtil from "../../utils/memoryUtil";
 import menuList from "../../config/menuConfig";
 
@@ -72,7 +73,16 @@ export default class Admin extends Component {
               <Redirect to="/home" />
             </Switch>
           </Content>
-          <Footer style={{ textAlign: "center" }}>推荐使用谷歌浏览器</Footer>
+          <Footer style={{ textAlign: "center" }}>
+            <Tag icon={<GithubOutlined />} color="#55acee">
+              <a
+                href="https://github.com/ChangYanwei/reactAdmin"
+                target="_blank"
+              >
+                源码地址
+              </a>
+            </Tag>
+          </Footer>
         </Layout>
       </Layout>
     );
