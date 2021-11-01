@@ -20,10 +20,6 @@ export default class ProductPicturesWall extends Component {
     fileList: PropTypes.array.isRequired,
   };
 
-  static defaultProps = {
-    fileList: [],
-  };
-
   state = {
     previewVisible: false,
     previewImage: "",

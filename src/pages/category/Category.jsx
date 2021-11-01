@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Card, Button, Table, message, Modal } from "antd";
 import { CaretRightOutlined } from "@ant-design/icons";
 import LinkButton from "../../components/link-button/LinkButton";
-
+import { PAGE_SIZE } from "../../utils/constant";
 // 子组件
 import AddForm from "./childComponents/AddForm";
 import UpdateForm from "./childComponents/UpdateForm";
@@ -28,6 +28,7 @@ export default class Category extends Component {
     parentName: "", // 父级分类的名称
     showStatus: 0, // 是否显示模态框，0：都不显示，1：显示添加框，2：显示更新框
     changeName: "", // 要修改的分类名称
+    changeCategory: {},
   };
 
   // 初始化table表格中列的数组
@@ -200,6 +201,7 @@ export default class Category extends Component {
     this.setState({
       showStatus: 0,
     });
+    this.addForm && this.addForm.form.resetFields();
   };
 
   componentDidMount() {
@@ -207,6 +209,7 @@ export default class Category extends Component {
   }
 
   render() {
+    console.log("render");
     const {
       categoryList,
       subCategoryList,
@@ -214,8 +217,8 @@ export default class Category extends Component {
       showStatus,
       parentId,
       parentName,
+      changeCategory,
     } = this.state;
-    const changeCategory = this.state.changeCategory || {};
 
     const title =
       parentId === "0" ? (
@@ -243,6 +246,9 @@ export default class Category extends Component {
             rowKey="_id"
             dataSource={parentId === "0" ? categoryList : subCategoryList}
             columns={this.columns}
+            pagination={{
+              defaultPageSize: PAGE_SIZE,
+            }}
           />
         </Card>
 

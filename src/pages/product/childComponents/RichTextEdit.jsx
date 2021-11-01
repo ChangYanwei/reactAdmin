@@ -32,10 +32,6 @@ export default class RichTextEdit extends Component {
     detail: PropTypes.string.isRequired,
   };
 
-  static defaultProps = {
-    detail: "",
-  };
-
   onEditorStateChange = editorState => {
     this.setState({
       editorState,

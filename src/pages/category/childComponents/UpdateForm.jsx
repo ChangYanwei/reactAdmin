@@ -7,10 +7,6 @@ export default class UpdateForm extends Component {
     categoryName: PropTypes.string.isRequired,
   };
 
-  static defaultProps = {
-    categoryName: "",
-  };
-
   componentDidUpdate() {
     const { categoryName } = this.props;
     this.form.setFieldsValue({
@@ -19,10 +15,12 @@ export default class UpdateForm extends Component {
   }
 
   render() {
+    const { categoryName } = this.props;
     return (
       <Form ref={c => (this.form = c)}>
         <Form.Item
           name="categoryName"
+          initialValue={categoryName}
           rules={[
             {
               required: true,
