@@ -53,12 +53,18 @@ export default class Role extends Component {
   onRow = role => {
     return {
       onClick: () => {
-        console.log("点击", role);
         this.setState({
           role,
         });
       },
     };
+  };
+
+  // 选中单选按钮
+  onRadioSelect = role => {
+    this.setState({
+      role,
+    });
   };
 
   // 获取角色列表
@@ -182,7 +188,11 @@ export default class Role extends Component {
           pagination={{
             defaultPageSize: PAGE_SIZE,
           }}
-          rowSelection={{ type: "radio", selectedRowKeys: [role._id] }}
+          rowSelection={{
+            type: "radio",
+            selectedRowKeys: [role._id],
+            onSelect: this.onRadioSelect,
+          }}
           onRow={this.onRow}
         />
 
