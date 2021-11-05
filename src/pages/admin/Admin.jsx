@@ -78,6 +78,7 @@ export default class Admin extends Component {
               <a
                 href="https://github.com/ChangYanwei/reactAdmin"
                 target="_blank"
+                rel="noreferrer"
               >
                 源码地址
               </a>

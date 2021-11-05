@@ -158,7 +158,7 @@ export default class ProductAddUpdate extends Component {
       message.success("操作成功");
       this.gotoProduct();
     } else {
-      message.error("添加失败");
+      message.error("操作失败");
     }
   };
 

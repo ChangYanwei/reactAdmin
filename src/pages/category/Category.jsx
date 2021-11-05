@@ -209,7 +209,6 @@ export default class Category extends Component {
   }
 
   render() {
-    console.log("render");
     const {
       categoryList,
       subCategoryList,
@@ -276,7 +275,7 @@ export default class Category extends Component {
           onCancel={this.closeModal}
         >
           <UpdateForm
-            categoryName={changeCategory.name}
+            categoryName={changeCategory.name || ""}
             ref={c => (this.updateForm = c)}
           />
         </Modal>

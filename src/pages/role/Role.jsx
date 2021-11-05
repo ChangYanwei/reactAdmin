@@ -15,13 +15,13 @@ export default class Role extends Component {
   constructor() {
     super();
     this.initColumns();
+    this.state = {
+      roles: [], // 角色列表
+      showStatus: 0, // 是否显示模态框，0：都不显示，1：显示添加框，2：显示更新框
+      role: {}, // 当前选中的角色
+      loading: true, // 表格数据是否加载中
+    };
   }
-
-  state = {
-    roles: [],
-    showStatus: 0, // 是否显示模态框，0：都不显示，1：显示添加框，2：显示更新框
-    role: {}, // 当前选中的角色
-  };
 
   // 初始化表格列
   initColumns = () => {
@@ -69,12 +69,16 @@ export default class Role extends Component {
 
   // 获取角色列表
   getRoles = async () => {
+    this.setState({
+      loading: true,
+    });
     const result = await reqGetRoles();
     if (result.status !== 0) {
       return message.error("获取角色列表失败，请重试");
     }
     this.setState({
       roles: result.data,
+      loading: false,
     });
   };
 
@@ -158,7 +162,7 @@ export default class Role extends Component {
   }
 
   render() {
-    const { roles, showStatus, role } = this.state;
+    const { roles, showStatus, role, loading } = this.state;
 
     const title = (
       <span>
@@ -182,6 +186,7 @@ export default class Role extends Component {
       <Card title={title}>
         <Table
           bordered
+          loading={loading}
           rowKey="_id"
           dataSource={roles}
           columns={this.columns}
