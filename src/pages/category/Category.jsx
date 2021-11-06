@@ -76,7 +76,6 @@ export default class Category extends Component {
       parentId,
     })
       .then(res => {
-        console.log(res.data);
         if (res.status === 0) {
           if (parentId === "0") {
             // 更新一级分类列表
