@@ -12,11 +12,13 @@ import { reqLogin } from "../../api/login";
 export default class Login extends Component {
   handleSubmit = values => {
     reqLogin(values).then(res => {
+      console.log(res);
       if (res.status === 0) {
         message.success("登录成功");
-        // 保存用户到localStorage中
-        storageUtil.saveUser(res.data);
-        memoryUtil.user = res.data;
+        const user = res.data;
+        // 保存用户和权限列表到localStorage中
+        storageUtil.saveUser(user);
+        memoryUtil.user = user;
 
         this.props.history.replace("/");
       } else {

@@ -51,11 +51,15 @@ class Header extends Component {
   render() {
     const { currentTime } = this.state;
     const { title } = this.props;
+    const { username, role } = memoryUtil.user;
     return (
       <div className="header">
         <div className="header-top">
           <span className="header-top-text">
-            欢迎，{memoryUtil.user.username}
+            欢迎{username}，您的身份是
+            <span style={{ fontWeight: "bold" }}>
+              {username === "admin" ? "超级管理员" : role.name}
+            </span>
           </span>
           <LinkButton onClick={this.showConfirm}>退出</LinkButton>
         </div>

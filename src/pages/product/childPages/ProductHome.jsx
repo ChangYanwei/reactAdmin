@@ -118,7 +118,6 @@ export default class ProductHome extends Component {
       if (list.length === 0) {
         message.warning("暂无商品");
       }
-      console.log(list);
       this.setState({
         products: list,
         total,

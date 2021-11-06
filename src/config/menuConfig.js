@@ -17,6 +17,7 @@ const menuList = [
     title: "首页",
     key: "/home",
     icon: <HomeOutlined />,
+    isPublic: true, // 代表公开菜单，所有用户都可访问
   },
   {
     title: "商品",
@@ -44,6 +45,7 @@ const menuList = [
     title: "角色管理",
     key: "/role",
     icon: <SettingOutlined />,
+    disabled: true,
   },
   {
     title: "图形图表",
@@ -54,6 +56,7 @@ const menuList = [
         title: "柱形图",
         key: "/charts/bar",
         icon: <BarChartOutlined />,
+        isPublic: true,
       },
       {
         title: "折线图",
