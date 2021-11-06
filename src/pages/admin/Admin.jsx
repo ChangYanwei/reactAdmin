@@ -17,6 +17,7 @@ import User from "../user/User";
 import Bar from "../charts/Bar";
 import Pie from "../charts/Pie";
 import Line from "../charts/Line";
+import NotFound from "../not-found/NotFound";
 
 const { Footer, Sider, Content } = Layout;
 
@@ -63,6 +64,7 @@ export default class Admin extends Component {
           <Header title={title}>Header</Header>
           <Content style={{ margin: "20px", backgroundColor: "white" }}>
             <Switch>
+              <Redirect from="/" to="/home" exact></Redirect>
               <Route path="/home" component={Home} />
               <Route path="/category" component={Category} />
               <Route path="/product" component={Product} />
@@ -71,7 +73,8 @@ export default class Admin extends Component {
               <Route path="/charts/bar" component={Bar} />
               <Route path="/charts/line" component={Line} />
               <Route path="/charts/pie" component={Pie} />
-              <Redirect to="/home" />
+              {/* 如果没有path属性，将匹配所有的路径 */}
+              <Route component={NotFound}></Route>
             </Switch>
           </Content>
           <Footer style={{ textAlign: "center" }}>
