@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
+import { connect } from "react-redux";
 import { Menu } from "antd";
 import menuList from "../../config/menuConfig";
 import memoryUtil from "../../utils/memoryUtil";
+import { setHeadTitle } from "../../redux/actions";
 
 import logo from "../../assets/images/logo.png";
 import "./LeftNav.less";
@@ -35,18 +37,32 @@ class LeftNav extends Component {
 
   // 根据菜单数组生成对应的标签
   getMenuNodes = menuList => {
+    const pathname = this.props.location.pathname;
+
     return menuList.map(menu => {
       if (!this.hasAuth(menu)) return null;
       if (!menu.children) {
+        if (pathname === menu.key || pathname.includes(menu.key)) {
+          this.props.setHeadTitle(menu.title);
+        }
+
         return (
           <Menu.Item key={menu.key} icon={menu.icon}>
-            <Link to={menu.key}>{menu.title}</Link>
+            <Link
+              to={menu.key}
+              onClick={() => {
+                // 更新redux中的title值
+                this.props.setHeadTitle(menu.title);
+              }}
+            >
+              {menu.title}
+            </Link>
           </Menu.Item>
         );
       }
       const childMenuList = menu.children;
 
-      const pathname = this.props.location.pathname;
+      // const pathname = this.props.location.pathname;
       const openItem = childMenuList.find(item => item.key === pathname);
       if (openItem) {
         this.openKey = menu.key;
@@ -82,4 +98,6 @@ class LeftNav extends Component {
   }
 }
 
-export default withRouter(LeftNav);
+// withRouter将一般组件包装成路由组件
+// connect将UI组件包装成容器组件
+export default connect(state => ({}), { setHeadTitle })(withRouter(LeftNav));

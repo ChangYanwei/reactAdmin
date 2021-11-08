@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
 import { Modal } from "antd";
 import { ExclamationCircleOutlined } from "@ant-design/icons";
 
@@ -74,4 +75,7 @@ class Header extends Component {
   }
 }
 
-export default withRouter(Header);
+export default connect(
+  state => ({ title: state.title }),
+  {}
+)(withRouter(Header));

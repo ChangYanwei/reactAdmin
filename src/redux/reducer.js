@@ -1,11 +1,12 @@
 import { combineReducers } from "redux";
 import storageUtil from "../utils/storageUtil";
+import { SETHEADTITLE } from "./action-types";
 
 // 用来管理头部标题的reducer
 export const title = (state = "首页", action) => {
   switch (action.type) {
-    case "ACTION_TYPE":
-      return;
+    case SETHEADTITLE:
+      return action.data;
     default:
       return state;
   }

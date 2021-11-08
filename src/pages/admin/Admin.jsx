@@ -3,7 +3,6 @@ import { Redirect, Switch, Route } from "react-router-dom";
 import { Layout, Tag } from "antd";
 import { GithubOutlined } from "@ant-design/icons";
 import memoryUtil from "../../utils/memoryUtil";
-import menuList from "../../config/menuConfig";
 
 // 引入子组件
 import LeftNav from "../../components/left-nav/LeftNav";
@@ -22,21 +21,6 @@ import NotFound from "../not-found/NotFound";
 const { Footer, Sider, Content } = Layout;
 
 export default class Admin extends Component {
-  // 获取当前页面的标题
-  getTitle = menuList => {
-    const pathname = this.props.location.pathname;
-    for (let i = 0; i < menuList.length; i++) {
-      const menu = menuList[i];
-      if (menu.key === pathname) {
-        return menu.title;
-      }
-      if (menu.children) {
-        const title = this.getTitle(menu.children);
-        if (title) return title;
-      }
-    }
-  };
-
   render() {
     const user = memoryUtil.user;
 
@@ -44,8 +28,6 @@ export default class Admin extends Component {
       // 在render函数中一定要返回内容，组件或者html
       return <Redirect to="/login" />;
     }
-
-    const title = this.getTitle(menuList);
 
     return (
       <Layout style={{ minHeight: "100vh" }}>
@@ -60,7 +42,7 @@ export default class Admin extends Component {
           <LeftNav />
         </Sider>
         <Layout style={{ marginLeft: 200 }}>
-          <Header title={title}>Header</Header>
+          <Header>Header</Header>
           <Content style={{ margin: "20px", backgroundColor: "white" }}>
             <Switch>
               <Redirect from="/" to="/home" exact></Redirect>

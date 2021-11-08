@@ -12,7 +12,6 @@ import { reqLogin } from "../../api/login";
 export default class Login extends Component {
   handleSubmit = values => {
     reqLogin(values).then(res => {
-      console.log(res);
       if (res.status === 0) {
         message.success("登录成功");
         const user = res.data;

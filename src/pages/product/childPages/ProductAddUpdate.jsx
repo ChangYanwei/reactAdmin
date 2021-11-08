@@ -72,7 +72,6 @@ export default class ProductAddUpdate extends Component {
       message.error("获取分类列表失败");
       return;
     }
-    console.log(res.data);
     if (parentId === "0") {
       // 更新一级分类列表
       this.initOptions(res.data);
@@ -167,11 +166,16 @@ export default class ProductAddUpdate extends Component {
   }
 
   render() {
-    // const product = this.props.location.state || {};
-
-    const { isUpdate, product } = this.state;
-    const { name, desc, price, categoryId, pCategoryId, imgs, detail } =
-      product;
+    const { isUpdate, product = {} } = this.state;
+    const {
+      name,
+      desc,
+      price,
+      categoryId,
+      pCategoryId,
+      imgs = [],
+      detail = "",
+    } = product;
     const title = (
       <span>
         <LinkButton onClick={this.gotoProduct}>
