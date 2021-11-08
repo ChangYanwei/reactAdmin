@@ -39,7 +39,6 @@ export default class Admin extends Component {
 
   render() {
     const user = memoryUtil.user;
-    const roleMenus = memoryUtil.menus;
 
     if (!user._id) {
       // 在render函数中一定要返回内容，组件或者html
@@ -58,7 +57,7 @@ export default class Admin extends Component {
             left: 0,
           }}
         >
-          <LeftNav roleMenus={roleMenus} />
+          <LeftNav />
         </Sider>
         <Layout style={{ marginLeft: 200 }}>
           <Header title={title}>Header</Header>
