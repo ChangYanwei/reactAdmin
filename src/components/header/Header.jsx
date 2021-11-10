@@ -3,9 +3,8 @@ import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { Modal } from "antd";
 import { ExclamationCircleOutlined } from "@ant-design/icons";
-
+import { quitLogin } from "../../redux/actions";
 import { formatDate } from "../../utils/dateUtil";
-import memoryUtil from "../../utils/memoryUtil";
 import storageUtil from "../../utils/storageUtil";
 import LinkButton from "../link-button/LinkButton";
 import "./Header.less";
@@ -14,7 +13,6 @@ const { confirm } = Modal;
 class Header extends Component {
   state = {
     currentTime: formatDate(Date.now()),
-    title: "",
   };
 
   // 获取当前时间
@@ -35,8 +33,8 @@ class Header extends Component {
       cancelText: "取消",
       onOk: () => {
         storageUtil.removeUser();
-        memoryUtil.user = {};
-        this.props.history.replace("/login");
+        this.props.quitLogin({});
+        // this.props.history.replace("/login");
       },
     });
   };
@@ -52,7 +50,7 @@ class Header extends Component {
   render() {
     const { currentTime } = this.state;
     const { title } = this.props;
-    const { username, role } = memoryUtil.user;
+    const { username, role } = this.props.user;
     return (
       <div className="header">
         <div className="header-top">
@@ -75,7 +73,6 @@ class Header extends Component {
   }
 }
 
-export default connect(
-  state => ({ title: state.title }),
-  {}
-)(withRouter(Header));
+export default connect(state => ({ title: state.title, user: state.user }), {
+  quitLogin,
+})(withRouter(Header));

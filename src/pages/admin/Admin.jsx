@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Redirect, Switch, Route } from "react-router-dom";
 import { Layout, Tag } from "antd";
 import { GithubOutlined } from "@ant-design/icons";
-import memoryUtil from "../../utils/memoryUtil";
+import { connect } from "react-redux";
 
 // 引入子组件
 import LeftNav from "../../components/left-nav/LeftNav";
@@ -20,9 +20,9 @@ import NotFound from "../not-found/NotFound";
 
 const { Footer, Sider, Content } = Layout;
 
-export default class Admin extends Component {
+class Admin extends Component {
   render() {
-    const user = memoryUtil.user;
+    const user = this.props.user;
 
     if (!user._id) {
       // 在render函数中一定要返回内容，组件或者html
@@ -74,3 +74,5 @@ export default class Admin extends Component {
     );
   }
 }
+
+export default connect(state => ({ user: state.user }), {})(Admin);

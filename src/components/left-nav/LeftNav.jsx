@@ -3,7 +3,6 @@ import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { Menu } from "antd";
 import menuList from "../../config/menuConfig";
-import memoryUtil from "../../utils/memoryUtil";
 import { setHeadTitle } from "../../redux/actions";
 
 import logo from "../../assets/images/logo.png";
@@ -15,7 +14,7 @@ class LeftNav extends Component {
   // 判断当前用户是否拥有权限
   hasAuth = menu => {
     const { key, isPublic } = menu;
-    const user = memoryUtil.user;
+    const user = this.props.user;
     const menus = user.role.menus;
     // 1.如果是admin用户，拥有所有权限
     // 2.如果当期菜单是公开的，则所有用户都可访问
@@ -62,7 +61,6 @@ class LeftNav extends Component {
       }
       const childMenuList = menu.children;
 
-      // const pathname = this.props.location.pathname;
       const openItem = childMenuList.find(item => item.key === pathname);
       if (openItem) {
         this.openKey = menu.key;
@@ -100,4 +98,6 @@ class LeftNav extends Component {
 
 // withRouter将一般组件包装成路由组件
 // connect将UI组件包装成容器组件
-export default connect(state => ({}), { setHeadTitle })(withRouter(LeftNav));
+export default connect(state => ({ user: state.user }), { setHeadTitle })(
+  withRouter(LeftNav)
+);

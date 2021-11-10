@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Card, Button, Table, Modal, message } from "antd";
+import { connect } from "react-redux";
 import { PAGE_SIZE } from "../../utils/constant";
 import { formatDate } from "../../utils/dateUtil";
-import memoryUtil from "../../utils/memoryUtil";
 
 // 引入组件
 import AddForm from "./childComponents/AddForm";
@@ -11,7 +11,7 @@ import AuthFrom from "./childComponents/AuthFrom";
 // 引入api
 import { reqGetRoles, reqAddRole, reqUpdateRole } from "../../api/role";
 
-export default class Role extends Component {
+class Role extends Component {
   constructor() {
     super();
     this.initColumns();
@@ -136,7 +136,7 @@ export default class Role extends Component {
   updateRole = async () => {
     const { role } = this.state;
     const checkedKeys = this.setForm.getMenu();
-    const auth_name = memoryUtil.user.username;
+    const auth_name = this.props.user.username;
     const auth_time = Date.now();
 
     // 这样设置能够少发一次请求
@@ -150,7 +150,6 @@ export default class Role extends Component {
       auth_time,
       auth_name,
     });
-    console.log(result);
     if (result.status === 0) {
       message.success("设置成功");
       this.closeModal();
@@ -226,3 +225,5 @@ export default class Role extends Component {
     );
   }
 }
+
+export default connect(state => ({ user: state.user }), {})(Role);

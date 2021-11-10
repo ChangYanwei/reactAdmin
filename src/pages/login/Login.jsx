@@ -1,33 +1,20 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
-import { Form, Input, Button, message } from "antd";
+import { connect } from "react-redux";
+import { Form, Input, Button } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import "./Login.less";
 import logo from "../../assets/images/logo.png";
-import storageUtil from "../../utils/storageUtil";
-import memoryUtil from "../../utils/memoryUtil";
+import { login } from "../../redux/actions";
 
-import { reqLogin } from "../../api/login";
-
-export default class Login extends Component {
+class Login extends Component {
   handleSubmit = values => {
-    reqLogin(values).then(res => {
-      if (res.status === 0) {
-        message.success("登录成功");
-        const user = res.data;
-        // 保存用户和权限列表到localStorage中
-        storageUtil.saveUser(user);
-        memoryUtil.user = user;
-
-        this.props.history.replace("/");
-      } else {
-        message.error("用户名或密码错误");
-      }
-    });
+    this.props.login(values);
   };
 
   render() {
-    const user = memoryUtil.user || {};
+    console.log("login render");
+    const user = this.props.user;
     if (user._id) {
       return <Redirect to="/" />;
     }
@@ -94,3 +81,10 @@ export default class Login extends Component {
     );
   }
 }
+
+export default connect(
+  state => ({
+    user: state.user,
+  }),
+  { login }
+)(Login);
