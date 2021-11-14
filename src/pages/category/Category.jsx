@@ -107,7 +107,6 @@ export default class Category extends Component {
         parentName: category.name,
       },
       () => {
-        console.log("点击", this.state.parentId);
         this.getCategorys();
         this.initTableColumns();
       }
@@ -164,7 +163,6 @@ export default class Category extends Component {
 
   // 展示更新分类的模态框
   showUpdateModal = category => {
-    console.log(category);
     this.setState({
       showStatus: 2,
       changeCategory: category,

@@ -3,7 +3,7 @@ import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { Menu } from "antd";
 import menuList from "../../config/menuConfig";
-import { setHeadTitle } from "../../redux/actions";
+import { setHeadTitle } from "../../redux/actions/title";
 
 import logo from "../../assets/images/logo.png";
 import "./LeftNav.less";

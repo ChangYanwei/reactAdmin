@@ -1,21 +1,8 @@
 // 包含action creator函数的模块
-import {
-  SET_HEAD_TITLE,
-  RECEIVE_USER,
-  LOGIN_AGAIN,
-  QUIT_LOGIN,
-} from "./action-types";
+import { RECEIVE_USER, LOGIN_AGAIN, QUIT_LOGIN } from "../action-types";
 import { message } from "antd";
-import { reqLogin } from "../api/login";
-import storageUtil from "../utils/storageUtil";
-
-// 设置头部标题的同步action
-export const setHeadTitle = data => {
-  return {
-    type: SET_HEAD_TITLE,
-    data,
-  };
-};
+import { reqLogin } from "../../api/login";
+import storageUtil from "../../utils/storageUtil";
 
 // 登录成功的同步action
 export const reveiveUser = data => {

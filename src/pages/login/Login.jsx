@@ -5,7 +5,7 @@ import { Form, Input, Button } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import "./Login.less";
 import logo from "../../assets/images/logo.png";
-import { login } from "../../redux/actions";
+import { login } from "../../redux/actions/user";
 
 class Login extends Component {
   handleSubmit = values => {
@@ -13,7 +13,6 @@ class Login extends Component {
   };
 
   render() {
-    console.log("login render");
     const user = this.props.user;
     if (user._id) {
       return <Redirect to="/" />;

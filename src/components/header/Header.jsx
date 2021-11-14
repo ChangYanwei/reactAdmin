@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { Modal } from "antd";
 import { ExclamationCircleOutlined } from "@ant-design/icons";
-import { quitLogin } from "../../redux/actions";
+import { quitLogin } from "../../redux/actions/user";
 import { formatDate } from "../../utils/dateUtil";
 import storageUtil from "../../utils/storageUtil";
 import LinkButton from "../link-button/LinkButton";

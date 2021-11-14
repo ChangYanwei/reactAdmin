@@ -37,24 +37,24 @@
 
 ### 返回示例：
 	成功:
-      {
-        "status": 0,
-        "data": {
-          "_id": "5c3b297dea95883f340178b0",
-          "password": "21232f297a57a5a743894a0e4a801fc3",
-          "username": "admin",
-          "create_time": 1547381117891,
-          "__v": 0,
-          "role": {
-            "menus": []
-          }
-        }
-      }
+	  {
+	    "status": 0,
+	    "data": {
+	      "_id": "5c3b297dea95883f340178b0",
+	      "password": "21232f297a57a5a743894a0e4a801fc3",
+	      "username": "admin",
+	      "create_time": 1547381117891,
+	      "__v": 0,
+	      "role": {
+	        "menus": []
+	      }
+	    }
+	  }
 	失败
 	  {
-        "status": 1,
-        "msg": "用户名或密码不正确!"
-      }
+	    "status": 1,
+	    "msg": "用户名或密码不正确!"
+	  }
 
 ## 2. 添加用户
 
@@ -75,22 +75,22 @@
 ### 返回示例：
 	成功:
 	  {
-        "status": 0,
-        "data": {
-          "_id": "5c3b382c82a14446f4ffb647",
-          "username": "admin6",
-          "password": "d7b79bb6d6f77e6cbb5df2d0d2478361",
-          "phone": "13712341234",
-          "email": "test@qq.com",
-          "create_time": 1547384876804,
-          "__v": 0
-        }
-      }
+	    "status": 0,
+	    "data": {
+	      "_id": "5c3b382c82a14446f4ffb647",
+	      "username": "admin6",
+	      "password": "d7b79bb6d6f77e6cbb5df2d0d2478361",
+	      "phone": "13712341234",
+	      "email": "test@qq.com",
+	      "create_time": 1547384876804,
+	      "__v": 0
+	    }
+	  }
 	失败
 	  {
-        "status": 1,
-        "msg": "此用户已存在"
-      }
+	    "status": 1,
+	    "msg": "此用户已存在"
+	  }
 
 ## 3. 更新用户
 ### 请求URL：
@@ -103,31 +103,31 @@
 
 	|参数		|是否必选 |类型     |说明
 	|_id         |Y       |string   |ID
-    |username    |N       |string   |用户名
-    |phone       |N       |string   |手机号
-    |email       |N       |string   |邮箱
-    |role_id     |N       |string   |角色ID
+	|username    |N       |string   |用户名
+	|phone       |N       |string   |手机号
+	|email       |N       |string   |邮箱
+	|role_id     |N       |string   |角色ID
 
 ### 返回示例：
 	成功:
 	  {
-        "status": 0,
-        "data": {
-          "_id": "5c3b382c82a14446f4ffb647",
-          "username": "admin6",
-          "password": "d7b79bb6d6f77e6cbb5df2d0d2478361",
-          "phone": "13712341234",
-          "email": "test@qq.com",
-          "create_time": 1547384876804,
-          "__v": 0
-        }
-      }
+	    "status": 0,
+	    "data": {
+	      "_id": "5c3b382c82a14446f4ffb647",
+	      "username": "admin6",
+	      "password": "d7b79bb6d6f77e6cbb5df2d0d2478361",
+	      "phone": "13712341234",
+	      "email": "test@qq.com",
+	      "create_time": 1547384876804,
+	      "__v": 0
+	    }
+	  }
 	失败
 	  {
-        "status": 1,
-        "msg": "此用户已存在"
-      }
-    
+	    "status": 1,
+	    "msg": "此用户已存在"
+	  }
+
 ## 4. 获取所有用户列表
 ### 请求URL：
 	http://localhost:5000/manage/user/list
@@ -140,50 +140,50 @@
 
 ### 返回示例：
     {
-	  "status": 0,
-	  "data": {
-	    "users": [
-	      {
-	        "_id": "5cb05b4db6ed8c44f42c9af2",
-	        "username": "test",
-	        "password": "202cb962ac59075b964b07152d234b70",
-	        "phone": "123412342134",
-	        "email": "sd",
-	        "role_id": "5ca9eab0b49ef916541160d4",
-	        "create_time": 1555061581734,
-	        "__v": 0
-	      },
-	      {
-	        "_id": "5cb05b69b6ed8c44f42c9af3",
-	        "username": "ss22",
-	        "password": "123",
-	        "phone": "23343",
-	        "email": "df",
-	        "role_id": "5caf5444c61376319cef80a8",
-	        "create_time": 1555061609666,
-	        "__v": 0
-	      }
-	    ],
-	    "roles": [
-	      {
-	        "menus": [
-	          "/home",
-	          "/role",
-	          "/category",
-	          "/products",
-	          "/product",
-	          "/charts/bar"
-	        ],
-	        "_id": "5ca9eaa1b49ef916541160d3",
-	        "name": "测试",
-	        "create_time": 1554639521749,
-	        "__v": 0,
-	        "auth_time": 1555145863489,
-	        "auth_name": "admin"
-	      }
-	    ]
-	  }
-	}
+      "status": 0,
+      "data": {
+        "users": [
+          {
+            "_id": "5cb05b4db6ed8c44f42c9af2",
+            "username": "test",
+            "password": "202cb962ac59075b964b07152d234b70",
+            "phone": "123412342134",
+            "email": "sd",
+            "role_id": "5ca9eab0b49ef916541160d4",
+            "create_time": 1555061581734,
+            "__v": 0
+          },
+          {
+            "_id": "5cb05b69b6ed8c44f42c9af3",
+            "username": "ss22",
+            "password": "123",
+            "phone": "23343",
+            "email": "df",
+            "role_id": "5caf5444c61376319cef80a8",
+            "create_time": 1555061609666,
+            "__v": 0
+          }
+        ],
+        "roles": [
+          {
+            "menus": [
+              "/home",
+              "/role",
+              "/category",
+              "/products",
+              "/product",
+              "/charts/bar"
+            ],
+            "_id": "5ca9eaa1b49ef916541160d3",
+            "name": "测试",
+            "create_time": 1554639521749,
+            "__v": 0,
+            "auth_time": 1555145863489,
+            "auth_name": "admin"
+          }
+        ]
+      }
+    }
 
 ## 5. 删除用户
 ### 请求URL：
@@ -257,8 +257,9 @@
           }
         ]
       }
-  
-      
+
+
+​      
 ## 7. 添加分类
 ### 请求URL：
     http://localhost:5000/manage/category/add
@@ -293,7 +294,7 @@
             "__v": 0
           }
         }
-          
+
 
 ## 8. 更新品类名称
 ### 请求URL：
@@ -336,7 +337,7 @@
         "__v": 0
       }
     }
-    
+
 
 ## 10. 获取商品分页列表
 ### 请求URL：
@@ -715,7 +716,7 @@
     POST
 
 ### 参数类型:
-  
+
     |参数		     |是否必选  |类型     |说明
     |_id          |Y       |string   |角色ID
     |menus        |Y       |array    |权限key数组
