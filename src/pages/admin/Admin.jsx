@@ -21,6 +21,28 @@ import NotFound from "../not-found/NotFound";
 const { Footer, Sider, Content } = Layout;
 
 class Admin extends Component {
+  // 动态注册路由
+  initDynamicRoutes = user => {
+    const routes = {
+      "/category": <Route path="/category" component={Category} />,
+      "/product": <Route path="/product" component={Product} />,
+      "/user": <Route path="/user" component={User} />,
+      "/role": <Route path="/role" component={Role} />,
+      "/charts/bar": <Route path="/charts/bar" component={Bar} />,
+      "/charts/line": <Route path="/charts/line" component={Line} />,
+      "/charts/pie": <Route path="/charts/pie" component={Pie} />,
+    };
+
+    let routesArr;
+    if (user.username === "admin") {
+      routesArr = Object.values(routes);
+    } else {
+      routesArr = user.role.menus.map(path => routes[path]);
+    }
+
+    return routesArr;
+  };
+
   render() {
     const user = this.props.user;
 
@@ -28,6 +50,8 @@ class Admin extends Component {
       // 在render函数中一定要返回内容，组件或者html
       return <Redirect to="/login" />;
     }
+
+    const routesArr = this.initDynamicRoutes(user);
 
     return (
       <Layout style={{ minHeight: "100vh" }}>
@@ -46,14 +70,8 @@ class Admin extends Component {
           <Content style={{ margin: "20px", backgroundColor: "white" }}>
             <Switch>
               <Redirect from="/" to="/home" exact></Redirect>
-              <Route path="/home" component={Home} />
-              <Route path="/category" component={Category} />
-              <Route path="/product" component={Product} />
-              <Route path="/user" component={User} />
-              <Route path="/role" component={Role} />
-              <Route path="/charts/bar" component={Bar} />
-              <Route path="/charts/line" component={Line} />
-              <Route path="/charts/pie" component={Pie} />
+              <Route path="/home" component={Home} />,{/* 动态注册路由 */}
+              {routesArr}
               {/* 如果没有path属性，将匹配所有的路径 */}
               <Route component={NotFound}></Route>
             </Switch>

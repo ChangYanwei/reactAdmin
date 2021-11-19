@@ -82,7 +82,7 @@ export default class ProductPicturesWall extends Component {
       return {
         name,
         statue: "done",
-        url: `http://localhost:5000/upload/${name}`,
+        url: `http://localhost:9001/upload/${name}`,
       };
     });
     this.setState({

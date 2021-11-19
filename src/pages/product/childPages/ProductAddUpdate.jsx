@@ -184,7 +184,6 @@ export default class ProductAddUpdate extends Component {
         <span>{isUpdate ? "修改商品" : "添加商品"}</span>
       </span>
     );
-
     return (
       <Card title={title}>
         <Form

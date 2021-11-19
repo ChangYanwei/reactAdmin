@@ -3,7 +3,7 @@ import { message } from "antd";
 
 export default function request(config) {
   const instance = axios.create({
-    baseURL: "http://localhost:3000",
+    baseURL: "http://82.157.168.147:9001/api",
     timeout: 5000,
   });
 

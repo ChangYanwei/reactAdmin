@@ -83,7 +83,7 @@ export default class ProductDetail extends Component {
                   <Image
                     key={imgName}
                     width={100}
-                    src={`http://localhost:5000/upload/${imgName}`}
+                    src={`http://localhost:9001/upload/${imgName}`}
                   />
                 ))}
               </Image.PreviewGroup>

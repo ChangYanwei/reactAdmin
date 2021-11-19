@@ -56,7 +56,6 @@ const menuList = [
         title: "柱形图",
         key: "/charts/bar",
         icon: <BarChartOutlined />,
-        isPublic: true,
       },
       {
         title: "折线图",
